@@ -1,0 +1,27 @@
+.
+├── LICENSE
+├── modular-code
+│   ├── charts.py
+│   ├── data.py
+│   ├── main.py
+│   ├── physics_base.py
+│   ├── __pycache__
+│   │   ├── charts.cpython-313.pyc
+│   │   ├── charts.cpython-314.pyc
+│   │   ├── data.cpython-313.pyc
+│   │   ├── data.cpython-314.pyc
+│   │   ├── physics_base.cpython-313.pyc
+│   │   ├── physics_base.cpython-314.pyc
+│   │   ├── rk4.cpython-313.pyc
+│   │   ├── rk4.cpython-314.pyc
+│   │   ├── wind.cpython-313.pyc
+│   │   └── wind.cpython-314.pyc
+│   ├── rk4.py
+│   └── wind.py
+├── monolithic-code.py
+├── physics-formulas.md
+├── README.md
+├── tree.txt
+└── update.md
+
+3 directories, 22 files
