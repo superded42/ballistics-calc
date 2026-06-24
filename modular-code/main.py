@@ -184,3 +184,5 @@ if len(Meh) >= 2:
     print()
 
 print(colored(f"{F:.4f} Н - сила запуска", 'yellow'))
+
+input('Для выхода нажмите Enter: ')
