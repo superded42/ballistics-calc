@@ -1,14 +1,14 @@
-name: Build Windows EXE
+name: Build Windows EXE and macOS App
 
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:  # позволяет запускать вручную из интерфейса GitHub
+  workflow_dispatch:  # ручной запуск
 
 jobs:
-  build:
-    runs-on: windows-latest  # реальная Windows-среда
-
+  # ---------- Сборка для Windows ----------
+  build-windows:
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4
 
@@ -30,5 +30,35 @@ jobs:
     - name: Upload EXE as artifact
       uses: actions/upload-artifact@v4
       with:
-        name: ballistics-calc
+        name: ballistics-calc-win
         path: modular-code/dist/main.exe
+
+  # ---------- Сборка для macOS ----------
+  build-macos:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install plotext termcolor py2app
+
+    - name: Build .app with py2app
+      run: |
+        python setup.py py2app
+
+    - name: Archive .app into .zip
+      run: |
+        zip -r BallisticsCalc.zip dist/Ballistics\ Calc.app
+
+    - name: Upload .app as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ballistics-calc-mac
+        path: BallisticsCalc.zip
